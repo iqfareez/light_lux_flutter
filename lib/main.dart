@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:light_lux/app.dart';
 
 void main() {
@@ -12,14 +10,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Light Lux',
       theme: ThemeData(
         primaryColor: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       darkTheme: ThemeData.dark().copyWith(),
-      home: AppPage(),
+      themeMode: ThemeMode.system,
+      home: Scaffold(
+        body: AppPage(),
+      ),
     );
   }
 }
