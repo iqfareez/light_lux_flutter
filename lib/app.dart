@@ -19,7 +19,7 @@ class _AppPageState extends State<AppPage> {
     // print("Lux value: $luxValue");
     setState(() {
       _luxString = "$luxValue";
-      bgColor = Colors.blue.withAlpha(luxValue.clamp(0, 255));
+      bgColor = Colors.orange.withAlpha(luxValue.clamp(0, 255));
       _equivalentText = EquivalentLuxValue.getEquivalent(luxValue);
     });
   }

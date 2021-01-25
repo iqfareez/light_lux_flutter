@@ -19,6 +19,17 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemeData.dark().copyWith(),
       themeMode: ThemeMode.system,
       home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          foregroundColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+          elevation: 1,
+          actions: [
+            TextButton.icon(
+                onPressed: () {}, icon: Icon(Icons.code), label: Text('GitHub'))
+          ],
+        ),
         body: AppPage(),
       ),
     );
