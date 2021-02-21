@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:light_lux/app.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'app.dart';
 
-void main() {
-  // GetStorage.init(); //enable when using history function
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final url = 'https://github.com/iqfareez/Light-Lux-Flutter';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Light Lux',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.orange,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       darkTheme: ThemeData.dark().copyWith(),
@@ -25,9 +23,23 @@ class MyApp extends StatelessWidget {
           foregroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
           elevation: 1,
+          leading: Icon(Icons.lightbulb_outline),
+          title: Text('Light Lux'),
           actions: [
             TextButton.icon(
-                onPressed: () {}, icon: Icon(Icons.code), label: Text('GitHub'))
+                onPressed: () async {
+                  if (await canLaunch(url)) {
+                    await launch(url);
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Can\'t launch URL. Unknown error'),
+                      backgroundColor: Colors.red,
+                    ));
+                    throw 'Could not launch $url';
+                  }
+                },
+                icon: Icon(Icons.code),
+                label: Text('GitHub'))
           ],
         ),
         body: AppPage(),
