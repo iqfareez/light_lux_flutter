@@ -1,6 +1,6 @@
-# Light Lux Flutter
+# Light Lux
 
-A simple Flutter app showing current light intensity.
+A simple Flutter app measuring current light intensity.
 
 ## Dependecies
 
