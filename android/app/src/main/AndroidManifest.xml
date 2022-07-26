@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.light_lux_flutter">
    <application
-        android:label="light_lux_flutter"
+        android:label="Light Lux"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
