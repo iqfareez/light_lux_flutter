@@ -12,9 +12,9 @@ class AppPage extends StatefulWidget {
 class _AppPageState extends State<AppPage> {
   String _luxString = 'Unknown';
   String _equivalentText = 'Unknown';
-  Light _light;
-  double _opacity;
-  StreamSubscription _subscription;
+  late Light _light;
+  late double _opacity;
+  late StreamSubscription _subscription;
 
   void onData(int luxValue) async {
     setState(() {
