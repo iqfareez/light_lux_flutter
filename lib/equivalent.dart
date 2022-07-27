@@ -2,27 +2,28 @@
 
 class EquivalentLuxValue {
   static String getEquivalent(int luxValue) {
-    if (luxValue >= 32000)
+    if (luxValue >= 32000) {
       return 'Direct sunlight';
-    else if (luxValue >= 10000)
+    } else if (luxValue >= 10000) {
       return 'Full daylight';
-    else if (luxValue >= 1000)
+    } else if (luxValue >= 1000) {
       return 'Overcast day';
-    else if (luxValue >= 400)
+    } else if (luxValue >= 400) {
       return 'Clear day';
-    else if (luxValue >= 320)
+    } else if (luxValue >= 320) {
       return 'Office lighting';
-    else if (luxValue >= 150)
+    } else if (luxValue >= 150) {
       return 'Train Station';
-    else if (luxValue >= 100)
+    } else if (luxValue >= 100) {
       return 'Dark overcast day';
-    else if (luxValue >= 80)
+    } else if (luxValue >= 80) {
       return 'Office building hallway';
-    else if (luxValue >= 50)
+    } else if (luxValue >= 50) {
       return 'Dark public area';
-    else if (luxValue >= 3)
+    } else if (luxValue >= 3) {
       return 'Dark';
-    else
+    } else {
       return 'Very dark';
+    }
   }
 }

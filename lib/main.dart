@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 import 'app.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  final url = 'https://github.com/iqfareez/Light-Lux-Flutter';
+  const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,29 +21,26 @@ class MyApp extends StatelessWidget {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          foregroundColor: Colors.transparent,
+          // foregroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
           elevation: 1,
-          leading: Icon(Icons.lightbulb_outline),
-          title: Text('Light Lux'),
           actions: [
-            TextButton.icon(
-                onPressed: () async {
-                  if (await canLaunch(url)) {
-                    await launch(url);
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('Can\'t launch URL. Unknown error'),
-                      backgroundColor: Colors.red,
-                    ));
-                    throw 'Could not launch $url';
-                  }
-                },
-                icon: Icon(Icons.code),
-                label: Text('GitHub'))
+            IconButton(
+              onPressed: () async {
+                if (!await launchUrl(
+                    Uri.parse('https://github.com/iqfareez/light_lux_flutter'),
+                    mode: LaunchMode.externalApplication)) {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('Can\'t launch URL. Unknown error'),
+                    backgroundColor: Colors.red,
+                  ));
+                }
+              },
+              icon: const Icon(Icons.code),
+            )
           ],
         ),
-        body: AppPage(),
+        body: const AppPage(),
       ),
     );
   }

@@ -1,12 +1,16 @@
 import 'dart:async';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:light/light.dart';
+
 import 'equivalent.dart';
 
 class AppPage extends StatefulWidget {
+  const AppPage({Key? key}) : super(key: key);
+
   @override
-  _AppPageState createState() => _AppPageState();
+  State<AppPage> createState() => _AppPageState();
 }
 
 class _AppPageState extends State<AppPage> {
@@ -56,7 +60,7 @@ class _AppPageState extends State<AppPage> {
       children: [
         AnimatedOpacity(
           opacity: _opacity,
-          duration: Duration(milliseconds: 800),
+          duration: const Duration(milliseconds: 800),
           child: Container(
             color: Colors.orange,
           ),
@@ -65,7 +69,7 @@ class _AppPageState extends State<AppPage> {
           child: AutoSizeText(
             _luxString,
             maxLines: 1,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 173,
               fontWeight: FontWeight.w100,
             ),
@@ -80,7 +84,7 @@ class _AppPageState extends State<AppPage> {
           child: Text(
             _equivalentText,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18),
+            style: const TextStyle(fontSize: 18),
           ),
         ),
       ],
