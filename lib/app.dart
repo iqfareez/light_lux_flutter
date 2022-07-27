@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:light/light.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'equivalent.dart';
 
@@ -56,38 +58,82 @@ class _AppPageState extends State<AppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedOpacity(
-          opacity: _opacity,
-          duration: const Duration(milliseconds: 800),
-          child: Container(
-            color: Colors.orange,
-          ),
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
         ),
-        Center(
-          child: AutoSizeText(
-            _luxString,
-            maxLines: 1,
-            style: const TextStyle(
-              fontSize: 173,
-              fontWeight: FontWeight.w100,
+        backgroundColor: Colors.transparent,
+        // foregroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 1,
+        actions: [
+          IconButton(
+            onPressed: () async {
+              showDialog(
+                  context: context,
+                  builder: (_) =>
+                      SimpleDialog(title: const Text('About'), children: [
+                        const SimpleDialogOption(
+                          child: Text(
+                              'Read the ambient light sensor that persist in your phone. It usually used for the Auto-brightness feature.'),
+                        ),
+                        SimpleDialogOption(
+                          child: const Text('View source code'),
+                          onPressed: () async {
+                            if (!await launchUrl(
+                                Uri.parse(
+                                    'https://github.com/iqfareez/light_lux_flutter'),
+                                mode: LaunchMode.externalApplication)) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(const SnackBar(
+                                content:
+                                    Text('Can\'t launch URL. Unknown error'),
+                                backgroundColor: Colors.red,
+                              ));
+                            }
+                          },
+                        )
+                      ]));
+            },
+            icon: const Icon(Icons.code),
+          )
+        ],
+      ),
+      body: Stack(
+        children: [
+          AnimatedOpacity(
+            opacity: _opacity,
+            duration: const Duration(milliseconds: 800),
+            child: Container(
+              color: Colors.orange,
             ),
-            textAlign: TextAlign.center,
           ),
-        ),
-        Positioned(
-          width: MediaQuery.of(context).size.width,
-          bottom: MediaQuery.of(context).orientation == Orientation.landscape
-              ? 50
-              : 110,
-          child: Text(
-            _equivalentText,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18),
+          Center(
+            child: AutoSizeText(
+              _luxString,
+              maxLines: 1,
+              style: const TextStyle(
+                fontSize: 173,
+                fontWeight: FontWeight.w100,
+              ),
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-      ],
+          Positioned(
+            width: MediaQuery.of(context).size.width,
+            bottom: MediaQuery.of(context).orientation == Orientation.landscape
+                ? 50
+                : 110,
+            child: Text(
+              _equivalentText,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
