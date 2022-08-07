@@ -78,7 +78,7 @@ class _AppPageState extends State<AppPage> {
                 builder: (_) => const SimpleAboutDialog(),
               );
             },
-            icon: const Icon(Icons.code),
+            icon: const Icon(Icons.info_outline),
           )
         ],
         bottom: PreferredSize(
