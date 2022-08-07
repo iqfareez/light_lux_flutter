@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:light_lux/util/my_url_launcher.dart';
 
 class SimpleAboutDialog extends StatelessWidget {
   const SimpleAboutDialog({
@@ -14,16 +14,16 @@ class SimpleAboutDialog extends StatelessWidget {
             'This app uses your phone\'s sensor to measure the light intensity of your surroundings. It usually used for the Auto-brightness feature.'),
       ),
       SimpleDialogOption(
+        child: const Text('Learn more about Lux (Wikipedia)'),
+        onPressed: () {
+          MyUrlLauncher.launch(context, 'https://en.wikipedia.org/wiki/Lux');
+        },
+      ),
+      SimpleDialogOption(
         child: const Text('View source code'),
         onPressed: () async {
-          if (!await launchUrl(
-              Uri.parse('https://github.com/iqfareez/light_lux_flutter'),
-              mode: LaunchMode.externalApplication)) {
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Can\'t launch URL. Unknown error'),
-              backgroundColor: Colors.red,
-            ));
-          }
+          MyUrlLauncher.launch(
+              context, 'https://github.com/iqfareez/light_lux_flutter');
         },
       )
     ]);

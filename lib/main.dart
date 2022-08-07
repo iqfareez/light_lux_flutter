@@ -9,14 +9,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Light Lux',
-        theme: ThemeData(
-          primaryColor: Colors.orange,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-          useMaterial3: true,
-        ),
-        darkTheme: ThemeData.dark().copyWith(),
-        themeMode: ThemeMode.system,
-        home: const AppPage());
+      title: 'Light Lux',
+      theme: ThemeData(
+        primaryColor: Colors.orange,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData.dark().copyWith(),
+      themeMode: ThemeMode.system,
+      home: const AppPage(),
+    );
   }
 }
