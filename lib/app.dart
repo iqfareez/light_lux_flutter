@@ -4,9 +4,9 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:light/light.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'equivalent.dart';
+import 'simple_about_dialog.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({Key? key}) : super(key: key);
@@ -61,45 +61,30 @@ class _AppPageState extends State<AppPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        systemOverlayStyle: const SystemUiOverlayStyle(
+        systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: Colors.transparent,
+          statusBarIconBrightness:
+              Theme.of(context).brightness == Brightness.dark
+                  ? Brightness.light
+                  : Brightness.dark,
         ),
         backgroundColor: Colors.transparent,
-        // foregroundColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        elevation: 1,
         actions: [
           IconButton(
             onPressed: () async {
               showDialog(
-                  context: context,
-                  builder: (_) =>
-                      SimpleDialog(title: const Text('About'), children: [
-                        const SimpleDialogOption(
-                          child: Text(
-                              'Read the ambient light sensor that persist in your phone. It usually used for the Auto-brightness feature.'),
-                        ),
-                        SimpleDialogOption(
-                          child: const Text('View source code'),
-                          onPressed: () async {
-                            if (!await launchUrl(
-                                Uri.parse(
-                                    'https://github.com/iqfareez/light_lux_flutter'),
-                                mode: LaunchMode.externalApplication)) {
-                              ScaffoldMessenger.of(context)
-                                  .showSnackBar(const SnackBar(
-                                content:
-                                    Text('Can\'t launch URL. Unknown error'),
-                                backgroundColor: Colors.red,
-                              ));
-                            }
-                          },
-                        )
-                      ]));
+                context: context,
+                builder: (_) => const SimpleAboutDialog(),
+              );
             },
             icon: const Icon(Icons.code),
           )
         ],
+        bottom: PreferredSize(
+          preferredSize: MediaQuery.of(context).size,
+          child: const SizedBox.shrink(),
+        ),
       ),
       body: Stack(
         children: [
