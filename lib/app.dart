@@ -9,7 +9,7 @@ import 'equivalent.dart';
 import 'simple_about_dialog.dart';
 
 class AppPage extends StatefulWidget {
-  const AppPage({Key? key}) : super(key: key);
+  const AppPage({super.key});
 
   @override
   State<AppPage> createState() => _AppPageState();

@@ -1,4 +1,5 @@
 /// Data copied from https://en.wikipedia.org/wiki/Lux
+library;
 
 class EquivalentLuxValue {
   static String getEquivalent(int luxValue) {

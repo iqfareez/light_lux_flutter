@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:light_lux/util/my_url_launcher.dart';
 
 class SimpleAboutDialog extends StatelessWidget {
-  const SimpleAboutDialog({
-    Key? key,
-  }) : super(key: key);
+  const SimpleAboutDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
