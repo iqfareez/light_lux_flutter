@@ -16,8 +16,8 @@ class AppPage extends StatefulWidget {
 }
 
 class _AppPageState extends State<AppPage> {
-  String _luxString = 'Unknown';
-  String _equivalentText = 'Unknown';
+  String _luxString = '-';
+  String _equivalentText = 'No light sensor exists on this device.';
   late Light _light;
   late double _opacity;
   late StreamSubscription _subscription;
