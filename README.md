@@ -4,6 +4,11 @@
 
 # Light Lux
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/iqfareez/light_lux_flutter/assets/60868965/f37b63dc-4a4d-4621-9d9f-b97a8c8d1369">
+  <img alt="Screenshots Light Lux Android App" src="https://github.com/iqfareez/light_lux_flutter/assets/60868965/f605aa6a-bd91-4b5e-9ea1-869df0413b56">
+</picture>
+
 A simple Flutter app measuring current light intensity.
 
 ## Download the app
