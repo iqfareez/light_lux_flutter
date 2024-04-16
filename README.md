@@ -11,6 +11,9 @@
 
 A simple Flutter app measuring current light intensity.
 
+> [!NOTE]
+> Not yet tested on iOS. If you would like to run this project on iOS, run `flutter create . --platforms ios` in the project directory.
+
 ## Download the app
 
 <a href='https://play.google.com/store/apps/details?id=com.fareez.lightLux&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="300"/></a>

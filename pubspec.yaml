@@ -3,7 +3,7 @@ description: Measuring light intensity from surrounding environment
 
 publish_to: "none"
 
-version: 1.1.0+3
+version: 1.1.1+4
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
